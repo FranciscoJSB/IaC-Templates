@@ -1,0 +1,70 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "landingZone_parameters": {
+        "value": {
+          "EnvironmentType" : "UAT",
+          "location" : "eastus2",
+          "subscription":"f3888d08-b6b3-4f5d-b4f1-45c1fedec20c",
+          "agentSubscription": "8a646816-3519-4f4e-98af-c4f0f8c0f5e0",
+
+          "agent_objectId":"9f6c6858-5604-4e9e-af26-cfcc7d546747",
+
+          "rgName": "BRS-PAN-USE2-NAVISION-UAT-RG01",
+          "agentRG":"BRS-GLB-USE2-ADOAGNTS-PRD-RG01",
+          "rgVnet": "BRS-GLB-USE2-NTWRKBRS-UAT-RG01",
+          
+          "vnetName": "BRS-GLB-USE2-APPLICFRONT-UAT-VN01",
+          "agentVnet":"BRS-GLB-USE2-APPLICSHR-DEV-VN02",
+          "vnetPVTPNTBRS":"BRS-GLB-USE2-PVTPNTBRS-UAT-VN01",
+          
+          "subnets" : "BRS-PAN-USE2-NAVISION-UAT-SN01",
+          "agentSubnet":"BRS-GLB-USE2-AGEDVOPS-DEV-SN01",
+          "subnetPVTPNTBRS":"BRS-PAN-USE2-PVTPNT-UAT-SN01"
+        }
+      },
+
+        "virtualMachine_parameters": {
+          "value": {
+            "vm1":{
+              "name": "RSUSAZ-NVSAPP1U",
+              "privateIP" : "10.169.123.53",
+              "networkInterfaceName":"RSUSAZ-NVSAPP1U-NIC01",
+              "osDiskType": "Premium_LRS",
+              "osDiskSize":"256",
+              "OSVersion" : "2019-datacenter-gensecond", 
+              "size": "Standard_D4s_v3",
+              "imageOffer":"WindowsServer",
+              "adminUsername" : "admin_cust",
+              "domainFQDN":"rs.sdxcorp.net",
+              "ouPath":"OU=Azure; OU=Servers; DC=rs; DC=sdxcorp; DC=net",
+              "needAvailabilitySet":true,
+              "availabilitySet":{
+                "availabilitySetName":"xsdf",
+                "availabilitySetPlatformFaultDomainCount":2,
+                "availabilitySetPlatformUpdateDomainCount":2
+              }
+            }
+          }
+        },
+        "dataDisks_list": {
+          "value": {
+              "dataDisk1": {
+                  "size": "350"
+              },
+              "dataDisk2": {
+                  "size": "50"
+              }
+          }
+        },
+
+
+        "tags": {
+          "value": {
+            "DeploymentDate" : "#{formatDate}#"
+          }
+        }
+
+    }
+  }

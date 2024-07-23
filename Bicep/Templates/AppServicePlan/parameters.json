@@ -1,0 +1,22 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+
+        "appServicePlan_p": {
+            "value": {
+                "name": "azclap1yyi860",
+                "sku": {
+                    "name": "P1v2",
+                    "tier": "PremiumV2"
+                },
+                "kind": "linux"
+            }
+        },
+        "tags": {
+            "value": {
+            }
+        }
+        
+    }
+}

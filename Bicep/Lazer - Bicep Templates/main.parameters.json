@@ -1,0 +1,192 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroup_parameter": {
+      "value": {
+        "networkRG": {
+          "name": "rg-network-cus-prod",
+          "location": "centralus"
+        },
+        "sharedRG": {
+          "name": "rg-shared-cus-prod",
+          "location": "centralus"
+        }
+      }
+    },
+    "hub_parameters":{
+      "value": [
+        {
+            "name": "vnet-hub-prod-ue-01",
+            "address": "10.10.10.0/24",
+            "subnets": [
+              {
+                "subnet_name": "AzureBastionSubnet",
+                "subnet_address": "10.10.10.32/27"
+              }]
+        }]
+    },
+
+    "network_parameters": {
+      "value": [
+        {
+          "name": "vnet-roc-spotlight-cus-preprod-001",
+          "address": "10.5.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "default",
+              "subnet_address": "10.5.0.0/24"
+            },
+            {
+              "subnet_name": "roc-azurefunction-outbound",
+              "subnet_address": "10.5.1.0/24"
+            }
+          ]
+        },
+        {
+          "name": "vnet-roc-spotlight-cus-prod-001",
+          "address": "10.6.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "default",
+              "subnet_address": "10.6.0.0/24"
+            },
+            {
+              "subnet_name": "roc-azurefunction-outbound",
+              "subnet_address": "10.6.1.0/24"
+            },
+            {
+              "subnet_name": "roc-vm-outbound",
+              "subnet_address": "10.6.2.0/24"
+            }
+          ]
+        },
+        {
+          "name": "vnet-spotlight-cus-prod-001",
+          "address": "10.1.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "default",
+              "subnet_address": "10.1.0.0/24"
+            }
+          ]
+        },
+        {
+          "name": "spotlight-preprod-api-vnet",
+          "address": "10.2.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "default",
+              "subnet_address": "10.2.0.0/24"
+            },
+            {
+              "subnet_name": "spotlight-preprod-subnet",
+              "subnet_address": "10.2.1.0/24"
+            }
+          ]
+        },
+        {
+          "name": "hmlazrprd-virtual-netowrk",
+          "address": "10.100.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "GatewaySubnet",
+              "subnet_address": "10.100.255.0/24"
+            },
+            {
+              "subnet_name": "hmlazrprd-mgmt-subnet",
+              "subnet_address": "10.100.3.0/24"
+            },
+            {
+              "subnet_name": "hmlazrprd-sql-subnet",
+              "subnet_address": "10.100.4.0/24"
+            },
+            {
+              "subnet_name": "hmlazrprd-server-subnet",
+              "subnet_address": "10.100.2.0/24"
+            }
+          ]
+        },
+        {
+          "name": "spotlite-prod-api-vnet",
+          "address": "10.3.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "gwsubnet",
+              "subnet_address": "10.3.0.0/24"
+            },
+            {
+              "subnet_name": "spotlite-prod-api-subnet",
+              "subnet_address": "10.3.1.0/24"
+            }
+          ]
+        },
+        {
+          "name": "vnet-spotlight-cus-preprod-001",
+          "address": "10.4.0.0/16",
+          "subnets": [
+            {
+              "subnet_name": "default",
+              "subnet_address": "10.4.0.0/24"
+            }
+          ]
+        }
+      ]
+    },
+    "networkSecurityGroup_parameters": {
+      "value": {
+        "name": "nsg-spot-cus-prod-001"
+      }
+    },
+
+    "keyVault_p": {
+      "value": {
+          "name": "kvt-shared-cus-prod",
+          "keyType":"RSA",
+          "keySize":"4096",
+          "sku": {
+              "family": "A",
+              "name": "Standard"
+          }
+      }
+    },
+
+    "logAnalyticsWorkspace_params":{
+      "value":{
+      "skuName":"PerGB2018",
+      "workspaceName":"law-shared-cus-prod",
+      "retentionInDays":60
+      }
+    },
+
+    "recoveryServices_parameters": {
+      "value": {
+        "name": "rsv-shared-cus-prod",
+        "policyName": "DailyBackupPolicy",
+        "storageType":"ZoneRedundant",
+        "daysOfTheWeek":["Sunday"],
+        "count":7,
+        "scheduleRunTimes":["2023-01-03T00:00:00.000Z"],
+        "DailyscheduleRunTimes":["2023-01-03T00:00:00.000Z"],
+        "enableSystemIdentity": "usr",
+        "weeklyRetentionDurationCount":"4"
+      }
+    },
+
+    "storageAccount_list": {
+      "value": {
+          "Storage_Account_1": {
+              "storageName": "spotlightstrgacc",
+              "serviceEndpoint":false,
+              "allNetworks":false,
+              "kind":"standard",
+              "redundancy":"LRS"
+          }
+        }
+    },
+    
+    "tags": {
+      "value": {}
+    }
+  }
+}

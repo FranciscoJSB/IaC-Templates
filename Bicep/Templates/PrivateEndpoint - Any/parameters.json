@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateEndpoint_p": {
+            "value": {
+                "PrivateEndpoint_1": {
+                    "privateEndpointName": "BRS-COL-USE2-PAYMENTGATEWAY-UAT-PE01",
+                    "privateIPAddress": ["10.169.40.160"],
+                    "privateDnsZone": "privatelink.azurewebsites.net",
+                    "groupName": ["sites"],
+                    "groupId":"sites",
+                    "ResourceName":"azusas1fos407",
+                    "resourceType":"Web/sites"
+                },
+                "PrivateEndpoint_2":{
+                    "privateEndpointName": "BRS-COL-USE2-PAYMENTGATEWAY-UAT-PE02",
+                    "privateIPAddress": ["10.169.40.161", "10.169.40.162"],
+                    "privateDnsZone": "privatelink.azurecr.io",
+                    "groupName": ["registry", "Registry_data_eastus2"],
+                    "groupId":"registry",
+                    "ResourceName":"azuscr1tke164",
+                    "resourceType":"ContainerRegistry/registries"
+                },
+                "PrivateEndpoint_3":{
+                    "privateEndpointName": "BRS-COL-USE2-PAYMENTGATEWAY-UAT-PE03",
+                    "privateIPAddress": ["10.169.40.163"],
+                    "privateDnsZone": "privatelink.database.windows.net",
+                    "groupName": ["sqlServer"],
+                    "groupId":"sqlServer",
+                    "ResourceName":"azusds1pim674",
+                    "resourceType":"Sql/servers"
+                },
+                "PrivateEndpoint_4":{
+                    "privateEndpointName": "BRS-COL-USE2-PAYMENTGATEWAY-UAT-PE04",
+                    "privateIPAddress": ["10.169.40.164"],
+                    "privateDnsZone": "privatelink.vaultcore.azure.net",
+                    "groupName": ["default"],
+                    "groupId":"vault",
+                    "ResourceName":"azusks1lea973",
+                    "resourceType":"KeyVault/vaults"
+                }
+                }
+        }
+    }
+}

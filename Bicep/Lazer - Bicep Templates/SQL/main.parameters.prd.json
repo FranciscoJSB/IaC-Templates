@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sqlServer_p":{
+            "value": {
+                "name":"hirschbach-spotlite-sqlserver-prod-lz",
+                "publicAccess": "Disabled",
+                "adminType":"ActiveDirectory",
+                "principalType":"Group",
+                "ServerAdmin": "arun.chaudhary@tavant.com",
+                "ADOauthentication":false,
+                "serverAdminID": "2f34b9ca-e2c1-4723-b981-2c5750c6f5ab",
+                "adminLogin":"eventdbadminprod"
+            }
+        },
+        
+        "sqlDatabase_p": {
+          "value": {
+            "sqlDatabase1":{
+              "name": "hirschbach-spotlite-siteevents-sqldb-prod",
+              "sku": {
+                "tier": "GeneralPurpose",
+                "name": "GP_Gen5",
+                "family":"Gen5",
+                "capacity":"16"
+              },
+              "collation":"SQL_Latin1_General_CP1_CI_AS",
+              "sizeBytes":214748364800,
+              "zoneRedundant":false,
+              "licenseType":"BasePrice",
+              "readScale":"Disabled",
+              "requestedBackupStorageRedundancy":"Geo",
+              "ledge":false
+            }
+          }
+        },
+
+        "sqlAdvisors_list":{
+            "value":{
+                "advisors1":{
+                    "name":"ForceLastGoodPlan",
+                    "state":"Enabled"
+                }
+            }
+        },
+    
+        "tags": {
+          "value": {
+          }
+        }
+
+    }
+  }
